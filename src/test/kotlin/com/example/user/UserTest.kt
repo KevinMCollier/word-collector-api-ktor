@@ -30,6 +30,12 @@ internal class UserTest {
     fun `user data is serialized to JSON format`() {
         val user = User("1", "John", "Doe", "john.doe@example.com")
         val json = Json.encodeToString(user)
-        assertTrue(json.contains("John") && json.contains("Doe") && json.contains("john.doe@example.com"))
+
+        assertTrue(json.startsWith("{") && json.endsWith("}"))
+
+        assertTrue(json.contains("\"id\":\"1"))
+        assertTrue(json.contains("\"firstName\":\"John\""))
+        assertTrue(json.contains("\"lastName\":\"Doe\""))
+        assertTrue(json.contains("\"email\":\"john.doe@example.com\""))
     }
 }
