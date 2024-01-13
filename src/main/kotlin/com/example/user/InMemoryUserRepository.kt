@@ -1,6 +1,6 @@
 package com.example.user
 
-class UserRepository {
+class InMemoryUserRepository {
     private val repository = mutableListOf<User>()
 
     fun add(user: User) {
