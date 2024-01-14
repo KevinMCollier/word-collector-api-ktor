@@ -1,22 +1,22 @@
 package com.example.user
 
 class InMemoryUserRepository: UserRepository {
-    private val repository = mutableListOf<User>()
+    private val userList = mutableListOf<User>()
 
     override fun add(user: User): Boolean {
-        repository.add(user)
+        userList.add(user)
         return true
     }
 
     fun contains(user: User): Boolean {
-        return repository.contains(user)
+        return userList.contains(user)
     }
 
     fun get(userId: String): User? {
-        return repository.find { it.id == userId }
+        return userList.find { it.id == userId }
     }
 
     fun getAll(): List<User> {
-        return repository.toList()
+        return userList.toList()
     }
 }
