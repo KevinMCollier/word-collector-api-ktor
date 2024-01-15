@@ -16,7 +16,7 @@ class InMemoryUserRepository: UserRepository {
         return userList.find { it.id == userId }
     }
 
-    fun getAll(): List<User> {
+    override fun getAll(): List<User> {
         return userList.toList()
     }
 }
