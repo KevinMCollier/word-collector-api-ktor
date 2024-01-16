@@ -12,7 +12,7 @@ class InMemoryUserRepository: UserRepository {
         return userList.contains(user)
     }
 
-    fun get(userId: String): User? {
+    override fun get(userId: String): User? {
         return userList.find { it.id == userId }
     }
 
