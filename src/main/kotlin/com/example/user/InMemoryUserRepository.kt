@@ -19,4 +19,13 @@ class InMemoryUserRepository: UserRepository {
     override fun getAll(): List<User> {
         return userList.toList()
     }
+
+    override fun update(user: User): Boolean {
+        val index = userList.indexOfFirst { it.id == user.id }
+        if (index != -1) {
+            userList[index] = user
+            return true
+        }
+        return false
+    }
 }

@@ -57,4 +57,45 @@ internal class UserRepositoryTest {
 
         assertEquals(testUser1, result)
     }
+
+    @Test
+    fun `update method should return true when a user is successfully updated`() {
+        val repository = MockUserRepository()
+        val testUser = User("1", "John", "Doe", "john.doe@example.com")
+
+        repository.add(testUser)
+        repository.updateUserSuccess = true
+
+        val result = repository.update(testUser)
+        assertTrue(result)
+        assertTrue(repository.updateInvoked)
+    }
+
+
+
+
+
+
+
+
+
+
+//    @Test
+//    fun `update method should return false when updating a non-existent user`() {
+//        val repository = MockUserRepository()
+//        val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
+//        repository.add(testUser1)
+//
+//        val userToUpdate = repository.get(testUser1.id)
+//        val updatedUser = userToUpdate.update("1", "Johnny", "Boy", "johnny.boy@example.com")
+//        val result = repository.get(updatedUser.id)
+//
+//        assertEquals(updatedUser.id, result)
+
+//    }
+//
+//    @Test
+//    fun `update method should update the name of the user`() {
+//
+//    }
 }
