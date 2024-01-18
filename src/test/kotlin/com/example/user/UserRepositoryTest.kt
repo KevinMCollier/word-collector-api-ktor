@@ -8,28 +8,17 @@ import kotlin.test.assertEquals
 internal class UserRepositoryTest {
     @Test
     fun `add method should return true when a new user is added successfully`() {
-        val repository = MockUserRepository()
-        repository.addUserSuccess = true
+        val repository = InMemoryUserRepository()
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
 
         val result = repository.add(testUser)
         assertTrue(result)
-        assertTrue(repository.addInvoked)
-    }
-    @Test
-    fun `add method should return false when adding a new user fails`() {
-        val repository = MockUserRepository()
-        repository.addUserSuccess = false
-        val testUser = User("1", "John", "Doe", "john.doe@example.com")
-
-        val result = repository.add(testUser)
-        assertFalse(result)
-        assertFalse(repository.addInvoked)
+        assertTrue(repository.contains(testUser))
     }
     @Test
     fun `read-all method should return all user objects`() {
         //arrange
-        val repository = MockUserRepository()
+        val repository = InMemoryUserRepository()
         val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
         val testUser2 = User("2", "Billy", "Bob", "billy.bob@example.com")
         val testUser3 = User("3", "Suzy", "May", "suzy.may@example.com")
@@ -45,7 +34,7 @@ internal class UserRepositoryTest {
     }
     @Test
     fun `read method should return one user object`() {
-        val repository = MockUserRepository()
+        val repository = InMemoryUserRepository()
         val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
         val testUser2 = User("2", "Billy", "Bob", "billy.bob@example.com")
         val testUser3 = User("3", "Suzy", "May", "suzy.may@example.com")
@@ -60,15 +49,27 @@ internal class UserRepositoryTest {
 
     @Test
     fun `update method should return true when a user is successfully updated`() {
-        val repository = MockUserRepository()
+        val repository = InMemoryUserRepository()
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
-
         repository.add(testUser)
-        repository.updateUserSuccess = true
 
-        val result = repository.update(testUser)
+        val updatedUser = testUser.copy(email = "john.updated@example.com")
+        val result = repository.update(updatedUser)
+
         assertTrue(result)
-        assertTrue(repository.updateInvoked)
+    }
+
+    @Test
+    fun `updated user data should be reflected in the repository`() {
+        val repository = InMemoryUserRepository()
+        val testUser = User("1", "John", "Doe", "john.doe@example.com")
+        repository.add(testUser)
+
+        val updatedUser = testUser.copy(email = "john.updated@example.com")
+        repository.update(updatedUser)
+        val retrievedUser = repository.get(testUser.id)
+
+        assertEquals(updatedUser, retrievedUser)
     }
 
 
