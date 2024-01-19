@@ -5,4 +5,5 @@ interface UserRepository {
     fun getAll(): List<User>
     fun get(userId: String): User?
     fun update(user: User): Boolean
+    fun delete(userId: String): Boolean
 }

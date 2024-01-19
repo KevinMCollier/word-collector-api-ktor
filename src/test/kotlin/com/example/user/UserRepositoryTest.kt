@@ -46,7 +46,6 @@ internal class UserRepositoryTest {
 
         assertEquals(testUser1, result)
     }
-
     @Test
     fun `update method should return true when a user is successfully updated`() {
         val repository = InMemoryUserRepository()
@@ -58,7 +57,6 @@ internal class UserRepositoryTest {
 
         assertTrue(result)
     }
-
     @Test
     fun `updated user data should be reflected in the repository`() {
         val repository = InMemoryUserRepository()
@@ -71,6 +69,28 @@ internal class UserRepositoryTest {
 
         assertEquals(updatedUser, retrievedUser)
     }
+    @Test
+    fun `delete method should return true when a user is successfully deleted`() {
+        val repository = InMemoryUserRepository()
+        val testUser = User("1", "John", "Doe", "john.doe@example.com")
+        repository.add(testUser)
+
+        val result = repository.delete(testUser.id)
+
+        assertTrue(result)
+    }
+
+    @Test
+    fun `delete method should remove a selected user from the repository`() {
+        val repository = InMemoryUserRepository()
+        val testUser = User("1", "John", "Doe", "john.doe@example.com")
+        repository.add(testUser)
+
+        repository.delete(testUser.id)
+        val userExists = repository.get(testUser.id) != null
+        assertFalse(userExists)
+    }
+
 
 
 

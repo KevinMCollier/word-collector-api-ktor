@@ -28,4 +28,8 @@ class InMemoryUserRepository: UserRepository {
         }
         return false
     }
+
+    override fun delete(userId: String): Boolean {
+        return userList.removeIf { it.id == userId }
+    }
 }
