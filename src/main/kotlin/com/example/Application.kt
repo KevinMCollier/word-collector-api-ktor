@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.plugins.*
+import com.example.user.InMemoryUserRepository
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
@@ -8,6 +9,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    val userRepository = InMemoryUserRepository()
     configureSerialization()
-    configureRouting()
+    configureRouting(userRepository)
 }
