@@ -15,6 +15,7 @@ internal class UserRepositoryTest {
         assertTrue(result)
         assertTrue(repository.contains(testUser))
     }
+
     @Test
     fun `read-all method should return all user objects`() {
         //arrange
@@ -32,6 +33,7 @@ internal class UserRepositoryTest {
         //assert
         assertEquals(listOf(testUser1, testUser2, testUser3), result)
     }
+
     @Test
     fun `read method should return one user object`() {
         val repository = InMemoryUserRepository()
@@ -46,6 +48,7 @@ internal class UserRepositoryTest {
 
         assertEquals(testUser1, result)
     }
+
     @Test
     fun `update method should return true when a user is successfully updated`() {
         val repository = InMemoryUserRepository()
@@ -57,6 +60,7 @@ internal class UserRepositoryTest {
 
         assertTrue(result)
     }
+
     @Test
     fun `updated user data should be reflected in the repository`() {
         val repository = InMemoryUserRepository()
@@ -69,6 +73,7 @@ internal class UserRepositoryTest {
 
         assertEquals(updatedUser, retrievedUser)
     }
+
     @Test
     fun `delete method should return true when a user is successfully deleted`() {
         val repository = InMemoryUserRepository()
@@ -90,33 +95,4 @@ internal class UserRepositoryTest {
         val userExists = repository.get(testUser.id) != null
         assertFalse(userExists)
     }
-
-
-
-
-
-
-
-
-
-
-
-//    @Test
-//    fun `update method should return false when updating a non-existent user`() {
-//        val repository = MockUserRepository()
-//        val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
-//        repository.add(testUser1)
-//
-//        val userToUpdate = repository.get(testUser1.id)
-//        val updatedUser = userToUpdate.update("1", "Johnny", "Boy", "johnny.boy@example.com")
-//        val result = repository.get(updatedUser.id)
-//
-//        assertEquals(updatedUser.id, result)
-
-//    }
-//
-//    @Test
-//    fun `update method should update the name of the user`() {
-//
-//    }
 }
