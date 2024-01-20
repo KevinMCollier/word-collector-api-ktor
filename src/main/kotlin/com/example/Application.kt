@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    val userRepository = InMemoryUserRepository()
+    val inMemoryUserRepository = InMemoryUserRepository()
     configureSerialization()
-    configureRouting(userRepository)
+    configureRouting(inMemoryUserRepository)
 }

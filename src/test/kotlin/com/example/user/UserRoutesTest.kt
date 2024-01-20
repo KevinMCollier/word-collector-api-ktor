@@ -1,6 +1,8 @@
 package com.example.user
 
 import com.example.plugins.configureRouting
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.server.testing.*
 import org.junit.jupiter.api.Test
@@ -18,6 +20,6 @@ class UserRoutesTest {
         val response = client.get("/user")
 
         assertEquals(HttpStatusCode.OK, response.status)
-        assertTrue(response.bodyAsText().isEmpty())
+        assertEquals("[]", response.bodyAsText())
     }
 }
