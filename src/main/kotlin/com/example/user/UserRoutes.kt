@@ -6,9 +6,9 @@ import io.ktor.server.routing.*
 
 fun Route.userRoutes(userRepository: UserRepository) {
     route("/user") {
-        get {
-            val usersList = userRepository.getAll()
-            call.respond(usersList)
+        get("/") {
+            val users = userRepository.getAll()
+            call.respond(users)
         }
     }
 }
