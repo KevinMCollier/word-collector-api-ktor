@@ -10,6 +10,7 @@ class MockUserRepository: UserRepository {
     override fun add(user: User): Boolean {
         if (addUserSuccess) {
             userList.add(user)
+            println("Added user: $user")
             addInvoked = true
             return true
         } else {
@@ -17,6 +18,7 @@ class MockUserRepository: UserRepository {
         }
     }
     override fun getAll(): List<User> {
+        println("Getting all users: $userList")
         return userList
     }
     override fun get(userId: String): User? {

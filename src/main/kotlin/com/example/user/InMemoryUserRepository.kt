@@ -1,6 +1,6 @@
 package com.example.user
 
-class InMemoryUserRepository: UserRepository {
+object InMemoryUserRepository: UserRepository {
     private val userList = mutableListOf<User>()
 
     override fun add(user: User): Boolean {
@@ -31,5 +31,9 @@ class InMemoryUserRepository: UserRepository {
 
     override fun delete(userId: String): Boolean {
         return userList.removeIf { it.id == userId }
+    }
+
+    fun clear() {
+        userList.clear()
     }
 }

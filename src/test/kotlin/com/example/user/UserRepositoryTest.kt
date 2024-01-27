@@ -8,7 +8,7 @@ import kotlin.test.assertEquals
 internal class UserRepositoryTest {
     @Test
     fun `add method should return true when a new user is added successfully`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
 
         val result = repository.add(testUser)
@@ -19,7 +19,7 @@ internal class UserRepositoryTest {
     @Test
     fun `read-all method should return all user objects`() {
         //arrange
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
         val testUser2 = User("2", "Billy", "Bob", "billy.bob@example.com")
         val testUser3 = User("3", "Suzy", "May", "suzy.may@example.com")
@@ -36,7 +36,7 @@ internal class UserRepositoryTest {
 
     @Test
     fun `read method should return one user object`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser1 = User("1", "John", "Doe", "john.doe@example.com")
         val testUser2 = User("2", "Billy", "Bob", "billy.bob@example.com")
         val testUser3 = User("3", "Suzy", "May", "suzy.may@example.com")
@@ -51,7 +51,7 @@ internal class UserRepositoryTest {
 
     @Test
     fun `update method should return true when a user is successfully updated`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
         repository.add(testUser)
 
@@ -63,7 +63,7 @@ internal class UserRepositoryTest {
 
     @Test
     fun `updated user data should be reflected in the repository`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
         repository.add(testUser)
 
@@ -76,7 +76,7 @@ internal class UserRepositoryTest {
 
     @Test
     fun `delete method should return true when a user is successfully deleted`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
         repository.add(testUser)
 
@@ -87,7 +87,7 @@ internal class UserRepositoryTest {
 
     @Test
     fun `delete method should remove a selected user from the repository`() {
-        val repository = InMemoryUserRepository()
+        val repository = InMemoryUserRepository
         val testUser = User("1", "John", "Doe", "john.doe@example.com")
         repository.add(testUser)
 

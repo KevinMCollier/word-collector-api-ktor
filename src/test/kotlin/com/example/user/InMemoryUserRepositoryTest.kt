@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 
 internal class InMemoryUserRepositoryTest {
-    private val inMemoryUserRepository = InMemoryUserRepository()
+    private val inMemoryUserRepository = InMemoryUserRepository
     @Test
     fun `add user to repository`() {
         val user = User("1", "John", "Doe", "john.doe@example.com")
